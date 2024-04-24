@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --active-color: #007aff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+.code-editor .margin-view-overlays,
+.monaco-mouse-cursor-text,
+.minimap-decorations-layer {
+  background-color: #13161a;
+  border: none;
+}
+.code-editor .monaco-editor .line-numbers {
+  color: #cccccc !important;
+}
+
+.code-editor .mtk1 {
+  color: #fff;
+}
+
+.monaco-editor .overflow-guard {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.monaco-editor,
+.monaco-diff-editor {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #13161a !important;
+}
+
+.activeFile {
+  background-color: var(--active-color);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Style scrollbar of Monaco Editor */
+.monaco-editor .scroll-decoration {
+  background-color: #f0f0f0; /* Change to your desired background color */
+}
+
+.monaco-scrollable-element > .invisible {
+  opacity: 1 !important;
+  background-color: #191d23;
+}
+.monaco-scrollable-element > .visible {
+  background-color: #191d23 !important;
+}
+
+.monaco-editor .scroll-decoration {
+  visibility: hidden !important;
+}
+
+/* Hide scrollbar while still allowing scrolling */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Optional: Hide scrollbar completely */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.active-nav-link {
+  color: #007aff;
+}
+.active-nav-link::after {
+  display: block;
+  border-bottom: 1px solid;
+  width: 80%;
+  margin: auto;
+  content: " ";
+}

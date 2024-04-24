@@ -1,0 +1,13 @@
+.tab {
+  color: #5d677d;
+}
+
+.activeTab {
+  color: #fff;
+  background-color: #007aff;
+  border-radius: 3px;
+  transition: 1s;
+}
+.activeTabBtn {
+  border: 3px;
+}
