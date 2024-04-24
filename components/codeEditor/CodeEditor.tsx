@@ -1,14 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Editor } from "@monaco-editor/react";
-import * as monacoEditor from "monaco-editor";
 
 import { LuArrowRightToLine } from "react-icons/lu";
 import { LuArrowLeftToLine } from "react-icons/lu";
 import { ActiveTabsBar } from "@/components";
-
-type EditorInstance = monacoEditor.editor.IStandaloneCodeEditor;
-type MonacoInstance = typeof monacoEditor;
 
 const CodeEditor = ({
   selectedFile,

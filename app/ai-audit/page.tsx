@@ -141,7 +141,7 @@ export default function Home() {
   const fileDirectoryData = useMemo(() => {
     const data = generateDirectoryData(fileData);
     return data;
-  }, [generateDirectoryData]);
+  }, []);
 
   return (
     <main className="h-full">
