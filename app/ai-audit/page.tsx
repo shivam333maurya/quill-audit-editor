@@ -28,7 +28,7 @@ const defaultWidth = {
     issue: { issueList: 320, issuesList: 420 },
   },
 };
-export default function Home() {
+export default function AiAudit() {
   const [currentFile, setCurrentFile] = useState({
     name: "untitled",
     type: "file",
