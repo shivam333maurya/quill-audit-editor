@@ -1,8 +1,10 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
 import { MyEnum } from "@/utils";
 import { PropsType } from "@/utils/interfaces";
+import Image from "next/image";
+import { arrowDown, arrowRight, folder, folderActive } from "@/assets";
 
 const FileNode = ({
   node,
@@ -12,10 +14,17 @@ const FileNode = ({
   selectedFile,
 }: PropsType) => {
   const { name, type, children, path } = node;
+  const [isOpen, setIsOpen] = useState(false);
+  const activeFolder = selectedFile?.path?.includes(path);
+  const activeFile = selectedFile?.path === path;
 
-  const handleFileClick = () => {
+  const handleFileClick = (type: string) => {
     if (type === "file" && onSelect) {
       onSelect(node); // Pass the file node to the onSelect function
+    }
+    if (type === "folder" && onSelect) {
+      console.log({ isOpen });
+      setIsOpen(!isOpen);
     }
   };
 
@@ -28,22 +37,25 @@ const FileNode = ({
     <li
       key={name}
       style={{ margin: 10 }}
-      onClick={handleFileClick}
       className={`${isSelected ? "selected" : "dedwef"} cursor-pointer`}
     >
       {type === "file" ? (
         <span
-          className={`${selectedFile?.path === path ? "text-[#007AFF]" : ""}`}
+          className={`${activeFile ? "text-[#007AFF]" : ""}`}
+          onClick={() => handleFileClick(type)}
         >
           {name}
         </span>
       ) : (
-        <details>
+        <details className={`${isOpen ? "open" : ""}`}>
           <summary
-            className={`${
-              selectedFile?.path?.includes(path) ? "text-[#007AFF]" : ""
+            className={`flex items-center gap-2 ${
+              activeFolder ? "text-[#007AFF]" : ""
             }`}
+            onClick={() => handleFileClick(type)}
           >
+            <Image src={isOpen ? arrowDown : arrowRight} alt="folder" />
+            <Image src={activeFolder ? folderActive : folder} alt="folder" />
             {name}
           </summary>
           <ul>
