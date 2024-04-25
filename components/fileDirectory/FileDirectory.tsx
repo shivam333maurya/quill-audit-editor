@@ -12,6 +12,7 @@ const FileNode = ({
   onSelect,
   isSelected,
   selectedFile,
+  loading = true,
 }: PropsType) => {
   const { name, type, children, path } = node;
   const [isOpen, setIsOpen] = useState(false);
@@ -19,12 +20,13 @@ const FileNode = ({
   const activeFile = selectedFile?.path === path;
 
   const handleFileClick = (type: string) => {
-    if (type === "file" && onSelect) {
-      onSelect(node); // Pass the file node to the onSelect function
-    }
-    if (type === "folder" && onSelect) {
-      console.log({ isOpen });
-      setIsOpen(!isOpen);
+    if (!loading) {
+      if (type === "file" && onSelect) {
+        onSelect(node); // Pass the file node to the onSelect function
+      }
+      if (type === "folder" && onSelect) {
+        setIsOpen(!isOpen);
+      }
     }
   };
 
@@ -66,6 +68,7 @@ const FileNode = ({
                 onSelect={onSelect}
                 isSelected={selectedFile && selectedFile.name === child?.name}
                 selectedFile={selectedFile}
+                loading={loading}
               />
             ))}
           </ul>
@@ -81,6 +84,7 @@ const FileDirectory = ({
   selectedFile,
   showPanal = true,
   className = "min-w-[230px]",
+  loading,
 }: any) => {
   return (
     <div
@@ -102,6 +106,7 @@ const FileDirectory = ({
             onSelect={onSelect}
             isSelected={selectedFile && selectedFile.name === child?.name}
             selectedFile={selectedFile}
+            loading={loading}
           />
         ))}
       </ul>

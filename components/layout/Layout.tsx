@@ -11,7 +11,6 @@ import { CONSTANTS } from "@/utils";
 const Layout = () => {
   const { LAYOUT_CONFIG } = CONSTANTS;
   const pathname = usePathname();
-  console.log({ pathname });
 
   return (
     <div className="pt-4">

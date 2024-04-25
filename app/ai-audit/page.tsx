@@ -9,45 +9,44 @@ import {
   BreadCrumb,
 } from "@/components";
 import { IssuesTab } from "@/components";
-import { fileData, generateDirectoryData } from "@/utils";
+import {
+  defaultFileData,
+  defaultWidth,
+  fileData,
+  generateDirectoryData,
+} from "@/utils";
+import {
+  BreadCrumbType,
+  ColumnWidthType,
+  CurrentFileType,
+  IssueDetails,
+  ShowPanalType,
+} from "@/utils/interfaces";
 
-const defaultWidth = {
-  sm: {
-    directoryColumn: 230,
-    editorColumn: "calc(100%-550px)",
-    issue: { issueList: 420, issuesList: 320 },
-  },
-  md: {
-    directoryColumn: 260,
-    editorColumn: "calc(100%-640px)",
-    issue: { issueList: 320, issuesList: 320 },
-  },
-  lg: {
-    directoryColumn: 320,
-    editorColumn: "calc(100%-640px)",
-    issue: { issueList: 320, issuesList: 420 },
-  },
-};
 export default function AiAudit() {
-  const [currentFile, setCurrentFile] = useState({
-    name: "untitled",
-    type: "file",
-    value: "Select File and start writing your code!",
+  const [currentFile, setCurrentFile] = useState<CurrentFileType>({
+    ...defaultFileData,
   });
-  const [selectedFiles, setSelectedFiles] = useState<any[]>([]);
-  const [selectedIssue, setSelectedIssue] = useState(null);
-  const [breadCrumbItems, setBreadCrumbItems] = useState([
+  const [selectedFiles, setSelectedFiles] = useState<CurrentFileType[]>([]);
+  const [selectedIssue, setSelectedIssue] = useState<any>(null);
+  const [breadCrumbItems, setBreadCrumbItems] = useState<BreadCrumbType[]>([
     {
       name: "Issue Count",
     },
   ]);
-  const [showPanal, setShowPanal] = useState<any>({ right: true, left: true });
-  const [issueDetails, setIssueDetails] = useState({
+  const [showPanal, setShowPanal] = useState<ShowPanalType>({
+    right: true,
+    left: true,
+  });
+  const [issueDetails, setIssueDetails] = useState<IssueDetails>({
     show: false,
     issue: null,
     index: null,
   });
-  const [columnWidth, setColumnWidth] = useState({ ...defaultWidth });
+  const [columnWidth, setColumnWidth] = useState<ColumnWidthType>({
+    ...defaultWidth,
+  });
+  const [loading, setLoading] = useState<boolean>(true);
 
   const handleFileSelection = (file: any) => {
     const currentFile: any = { ...file };
@@ -72,11 +71,7 @@ export default function AiAudit() {
     const currentFile = newItems.at(-1);
     setSelectedFiles(newItems);
     if (!newItems.length) {
-      setCurrentFile({
-        name: "untitled",
-        type: "file",
-        value: "Select File and start writing your code!",
-      });
+      setCurrentFile({ ...defaultFileData });
     } else {
       setCurrentFile(currentFile);
     }
@@ -138,6 +133,10 @@ export default function AiAudit() {
     }
   };
 
+  function handleEditorDidMount() {
+    setLoading(false);
+  }
+
   const fileDirectoryData = useMemo(() => {
     const data = generateDirectoryData(fileData);
     return data;
@@ -163,6 +162,7 @@ export default function AiAudit() {
             selectedFile={currentFile}
             onSelect={handleFileClick}
             showPanal={showPanal.left}
+            loading={loading}
           />
           <CodeEditor
             className={`min-w-[${columnWidth.sm.editorColumn}]`}
@@ -171,6 +171,7 @@ export default function AiAudit() {
             handleShowPanal={handleShowPanal}
             handleClearSelectedFile={handleClearSelectedFile}
             handleFileClick={handleFileClick}
+            handleEditorDidMount={handleEditorDidMount}
             showPanal={showPanal}
           />
           {!selectedIssue && !issueDetails.show && (

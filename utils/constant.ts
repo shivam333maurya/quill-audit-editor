@@ -393,4 +393,29 @@ const fileData = {
   ],
 };
 
-export { CONSTANTS, issues, fileData };
+const defaultWidth = {
+  sm: {
+    directoryColumn: 230,
+    editorColumn: "calc(100%-550px)",
+    issue: { issueList: 420, issuesList: 320 },
+  },
+  md: {
+    directoryColumn: 260,
+    editorColumn: "calc(100%-640px)",
+    issue: { issueList: 320, issuesList: 320 },
+  },
+  lg: {
+    directoryColumn: 320,
+    editorColumn: "calc(100%-640px)",
+    issue: { issueList: 320, issuesList: 420 },
+  },
+};
+
+const defaultFileData = {
+  name: "untitled",
+  type: "file",
+  value: "Select File and start writing your code!",
+  path: "",
+};
+
+export { CONSTANTS, issues, fileData, defaultWidth, defaultFileData };

@@ -14,6 +14,7 @@ const CodeEditor = ({
   handleFileClick,
   handleClearSelectedFile,
   className = "",
+  handleEditorDidMount,
 }: any) => {
   const [editorData, setEditor] = useState<any>(selectedFile);
 
@@ -55,6 +56,7 @@ const CodeEditor = ({
         defaultLanguage="javascript"
         value={editorData.value}
         className="code-editor"
+        onMount={handleEditorDidMount}
       />
     </div>
   );
