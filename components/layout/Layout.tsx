@@ -36,7 +36,9 @@ const Layout = () => {
                 {LAYOUT_CONFIG.map((key) => (
                   <li
                     className={`${
-                      pathname === key.path ? "active-nav-link" : ""
+                      pathname.trim() === key?.path.trim()
+                        ? "active-nav-link"
+                        : ""
                     }`}
                     key={`${key.title}}`}
                   >
