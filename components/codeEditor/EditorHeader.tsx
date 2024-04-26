@@ -2,8 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { RxDotFilled } from "react-icons/rx";
 
-import { contractSvg } from "@/assets";
-import { getColorByIssueType } from "@/utils";
+import { EIcons, getColorByIssueType } from "@/utils";
 
 const EditorHeader: React.FC = () => {
   return (
@@ -13,7 +12,7 @@ const EditorHeader: React.FC = () => {
           alt="img"
           width={22}
           height={26}
-          src={contractSvg}
+          src={EIcons.ContractSvg}
           className="w-auto h-auto"
         />
         <span>Sample Project</span>

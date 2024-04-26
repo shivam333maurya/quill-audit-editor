@@ -34,7 +34,7 @@ const CONSTANTS = {
   ],
 };
 
-const issues = [
+const ISSUES = [
   {
     issue: "Total Issues Found",
     key: "totalIssues",
@@ -364,7 +364,7 @@ const issues = [
   },
 ];
 
-const fileData = {
+const FILE_DATA = {
   name: "root",
   type: "folder",
   children: [
@@ -393,7 +393,13 @@ const fileData = {
   ],
 };
 
-const defaultWidth = {
+const NAV_BREADCRUMB = [
+  { name: "Ai Audit", key: 0 },
+  { name: "My Project", key: 1 },
+  { name: "Code Editor", key: 2 },
+];
+
+const DEFAULT_WIDTH = {
   sm: {
     directoryColumn: 230,
     editorColumn: "calc(100%-550px)",
@@ -411,11 +417,18 @@ const defaultWidth = {
   },
 };
 
-const defaultFileData = {
+const DEFAULT_FILE_DATA = {
   name: "untitled",
   type: "file",
   value: "Select File and start writing your code!",
   path: "",
 };
 
-export { CONSTANTS, issues, fileData, defaultWidth, defaultFileData };
+export {
+  CONSTANTS,
+  ISSUES,
+  FILE_DATA,
+  DEFAULT_WIDTH,
+  DEFAULT_FILE_DATA,
+  NAV_BREADCRUMB,
+};

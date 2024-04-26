@@ -1,3 +1,8 @@
+import {
+  IDirectoryDataType,
+  IRawDirectoryDataType,
+} from "./interfaces/interfaces";
+
 const getColorByIssueType = (issue: string) => {
   switch (issue) {
     case "Total Issues Found":
@@ -17,14 +22,14 @@ const getColorByIssueType = (issue: string) => {
   }
 };
 
-const generateDirectoryData = (fileData: any) => {
+const generateDirectoryData = (fileData: IRawDirectoryDataType) => {
   const data = {
     ...fileData,
     path: `/${fileData.name}`,
     children: fileData.children,
   };
 
-  const addPath = (fileStructure: any, parentPath = "") => {
+  const addPath = (fileStructure: any, parentPath: string) => {
     return fileStructure.map((node: any) => {
       const { name, type, children, value } = node;
       const path = parentPath ? `${parentPath}/${name}` : `/${name}`;

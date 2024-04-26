@@ -1,15 +1,18 @@
-function BreadCrumb({ list = [], onClick = () => {} }: any) {
+import { IBreadCrumbType } from "@/utils/interfaces/interfaces";
+import { IBreadCrumbPropsType } from "@/utils/interfaces/props-interfaces";
+
+function BreadCrumb({ list, onClick }: IBreadCrumbPropsType) {
   function generateBreadcrumb() {
     return (
       <div className="flex my-3 text-[#7B8191] flex-wrap cursor-pointer">
-        {list.map((item: any, index: number) => {
+        {list.map((item: IBreadCrumbType, index) => {
           return (
             <div key={item?.name} className="text-[12px]">
               <span
                 className={`mr-1 ${
                   index + 1 === list.length ? "text-white" : ""
                 }`}
-                onClick={() => onClick(item, index)}
+                onClick={() => onClick && onClick(item)}
               >
                 {item?.name}
               </span>

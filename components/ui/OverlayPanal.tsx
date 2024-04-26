@@ -1,4 +1,6 @@
-function OverlayPanal(props: any) {
+import { IOverlayPanalPropsType } from "@/utils/interfaces/props-interfaces";
+
+function OverlayPanal(props: IOverlayPanalPropsType) {
   const { children, className = "", showPanal = true } = props;
 
   return (

@@ -5,8 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { IoIosArrowDown } from "react-icons/io";
 
-import { profileDefault, quillLogo } from "@/assets";
-import { CONSTANTS } from "@/utils";
+import { EIcons, CONSTANTS } from "@/utils";
 
 const Layout = () => {
   const { LAYOUT_CONFIG } = CONSTANTS;
@@ -22,7 +21,7 @@ const Layout = () => {
                 alt="logo"
                 width={20}
                 height={20}
-                src={quillLogo}
+                src={EIcons.QuillLogo}
                 className="w-auto h-auto"
               />
               <Link href={"."}>QuillShield</Link>
@@ -54,7 +53,7 @@ const Layout = () => {
                 alt="profile"
                 height={28}
                 width={28}
-                src={profileDefault}
+                src={EIcons.ProfileDefault}
                 className="bg-[#4FA274] w-[28px] h-[28px] p-[5px] rounded-full"
               />
             </div>

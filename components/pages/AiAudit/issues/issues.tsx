@@ -2,7 +2,7 @@
 import React, { useMemo, useState } from "react";
 import Image from "next/image";
 
-import { info } from "@/assets";
+import { IIssuesTabPropsType } from "@/utils/interfaces/props-interfaces";
 import {
   BreadCrumb,
   HrDivider,
@@ -11,27 +11,27 @@ import {
   IssuesList,
   Tabs,
 } from "@/components";
-import { issues } from "@/utils";
+import { EIcons, ISSUES } from "@/utils";
 
 const IssuesTab = ({
   handleIssuesClick,
   selectedIssue,
-  breadCrumbItems = [],
+  breadCrumbItems,
   issueDetails,
   handleIssueClick,
   handleBreadCrumb,
-}: any) => {
+}: IIssuesTabPropsType) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const tabData = useMemo(() => {
     return [
       {
         name: "Current Project",
-        component: <IssuesList onClick={handleIssuesClick} issues={issues} />,
+        component: <IssuesList onClick={handleIssuesClick} issues={ISSUES} />,
       },
       {
         name: "Full Project",
-        component: <IssuesList onClick={handleIssuesClick} issues={issues} />,
+        component: <IssuesList onClick={handleIssuesClick} issues={ISSUES} />,
       },
     ];
   }, [handleIssuesClick]);
@@ -72,7 +72,13 @@ const IssuesTab = ({
       ) : (
         <div className="w-full px-3 absolute bottom-[12px] text-[12px]">
           <div className="flex items-center gap-2">
-            <Image alt="logo" width={16} height={16} src={info} />
+            <Image
+              alt="logo"
+              width={16}
+              height={16}
+              src={EIcons.Info}
+              className="w-auto h-auto"
+            />
             <span className="text-[#EEEEEE] text-[12px]">
               Changes done in the code can be undone.
             </span>

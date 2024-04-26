@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
+import { ITabDataProps, ITabsProps } from "@/utils/interfaces/props-interfaces";
 import classes from "./styles.module.css";
-import { TabProps } from "@/utils/interfaces";
 
 const defaultTabs = [
   {
@@ -15,11 +15,11 @@ const defaultTabs = [
   },
 ];
 
-const Tabs = (props: TabProps) => {
+const Tabs = (props: ITabsProps) => {
   const { onClick, selectedTab = 0, data = [...defaultTabs] } = props;
 
   const tabs = () => {
-    const tabList = data.map((tab: any, index: number) => {
+    const tabList = data.map((tab: ITabDataProps, index: number) => {
       return (
         <div
           key={tab.name}

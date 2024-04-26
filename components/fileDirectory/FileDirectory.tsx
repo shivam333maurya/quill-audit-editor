@@ -1,10 +1,13 @@
 "use client";
 import React, { useState } from "react";
-
-import { MyEnum } from "@/utils";
-import { PropsType } from "@/utils/interfaces";
 import Image from "next/image";
-import { arrowDown, arrowRight, folder, folderActive } from "@/assets";
+
+import {
+  IFileDirectoryPropsType,
+  IFileNodePropsType,
+} from "@/utils/interfaces/props-interfaces";
+import { IDirectoryDataType } from "@/utils/interfaces/interfaces";
+import { MyEnum, EIcons } from "@/utils";
 
 const FileNode = ({
   node,
@@ -12,8 +15,8 @@ const FileNode = ({
   onSelect,
   isSelected,
   selectedFile,
-  loading = true,
-}: PropsType) => {
+  loading,
+}: IFileNodePropsType) => {
   const { name, type, children, path } = node;
   const [isOpen, setIsOpen] = useState(false);
   const activeFolder = selectedFile?.path?.includes(path);
@@ -56,12 +59,24 @@ const FileNode = ({
             }`}
             onClick={() => handleFileClick(type)}
           >
-            <Image src={isOpen ? arrowDown : arrowRight} alt="folder" />
-            <Image src={activeFolder ? folderActive : folder} alt="folder" />
+            <Image
+              src={isOpen ? EIcons.ArrowDown : EIcons.ArrowRight}
+              alt="folder"
+              width={10}
+              height={6}
+              className="w-auto h-auto"
+            />
+            <Image
+              src={activeFolder ? EIcons.FolderActive : EIcons.Folder}
+              alt="folder"
+              width={16}
+              height={14}
+              className="w-auto h-auto"
+            />
             {name}
           </summary>
           <ul>
-            {children.map((child: any, index: number) => (
+            {children?.map((child: IDirectoryDataType, index: number) => (
               <FileNode
                 key={`${child.name} ${index + 1}`}
                 node={child}
@@ -85,7 +100,7 @@ const FileDirectory = ({
   showPanal = true,
   className = "min-w-[230px]",
   loading,
-}: any) => {
+}: IFileDirectoryPropsType) => {
   return (
     <div
       className={`max-w-[18%] ${className} bg-[#13161A] rounded-[4px] ${
@@ -98,7 +113,7 @@ const FileDirectory = ({
       </h2>
 
       <ul>
-        {data.children.map((child: any, index: number) => (
+        {data?.children?.map((child: IDirectoryDataType, index: number) => (
           <FileNode
             key={`${child.name} ${index + 1}`}
             node={child}

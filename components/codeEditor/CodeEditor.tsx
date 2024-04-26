@@ -2,21 +2,23 @@
 import React, { useEffect, useState } from "react";
 import { Editor } from "@monaco-editor/react";
 
+import { ICurrentFileType } from "@/utils/interfaces/interfaces";
+import { CodeEditorPropsType } from "@/utils/interfaces/props-interfaces";
 import { LuArrowRightToLine } from "react-icons/lu";
 import { LuArrowLeftToLine } from "react-icons/lu";
 import { ActiveTabsBar } from "@/components";
 
 const CodeEditor = ({
   selectedFile,
-  selectedFiles = [],
+  selectedFiles,
   handleShowPanal,
   showPanal,
   handleFileClick,
   handleClearSelectedFile,
-  className = "",
+  className,
   handleEditorDidMount,
-}: any) => {
-  const [editorData, setEditor] = useState<any>(selectedFile);
+}: CodeEditorPropsType) => {
+  const [editorData, setEditor] = useState<ICurrentFileType>(selectedFile);
 
   useEffect(() => {
     setEditor(selectedFile);

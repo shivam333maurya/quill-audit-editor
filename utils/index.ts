@@ -1,9 +1,10 @@
-export { MyEnum } from "./enums";
+export { MyEnum, EIcons } from "./enums";
 export { getColorByIssueType, generateDirectoryData } from "./helper";
 export {
   CONSTANTS,
-  issues,
-  fileData,
-  defaultWidth,
-  defaultFileData,
+  ISSUES,
+  FILE_DATA,
+  DEFAULT_WIDTH,
+  DEFAULT_FILE_DATA,
+  NAV_BREADCRUMB,
 } from "./constant";
