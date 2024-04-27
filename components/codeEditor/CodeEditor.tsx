@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Editor } from "@monaco-editor/react";
 
-import { ICurrentFileType } from "@/utils/interfaces/interfaces";
+import { IDirectoryItem } from "@/utils/interfaces/interfaces";
 import { CodeEditorPropsType } from "@/utils/interfaces/props-interfaces";
 import { LuArrowRightToLine } from "react-icons/lu";
 import { LuArrowLeftToLine } from "react-icons/lu";
@@ -18,7 +18,7 @@ const CodeEditor = ({
   className,
   handleEditorDidMount,
 }: CodeEditorPropsType) => {
-  const [editorData, setEditor] = useState<ICurrentFileType>(selectedFile);
+  const [editorData, setEditor] = useState<IDirectoryItem>(selectedFile);
 
   useEffect(() => {
     setEditor(selectedFile);

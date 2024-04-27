@@ -1,7 +1,6 @@
 import {
   IBreadCrumbType,
-  ICurrentFileType,
-  IDirectoryDataType,
+  IDirectoryItem,
   IIssueDetails,
   IIssueType,
   IIssuesType,
@@ -9,11 +8,11 @@ import {
 } from "./interfaces";
 
 export interface IFileNodePropsType {
-  node: IDirectoryDataType;
-  onSelect?: (file: ICurrentFileType) => void;
+  node: IDirectoryItem;
+  onSelect?: (file: IDirectoryItem) => void;
   index?: number;
   isSelected?: boolean;
-  selectedFile?: ICurrentFileType;
+  selectedFile?: IDirectoryItem;
   loading: boolean;
 }
 
@@ -65,30 +64,30 @@ export interface IIssueListPropsType {
 }
 
 export interface IFileDirectoryPropsType {
-  data: IDirectoryDataType;
-  onSelect: (props: ICurrentFileType) => void;
-  selectedFile: ICurrentFileType;
+  data: IDirectoryItem;
+  onSelect: (props: IDirectoryItem) => void;
+  selectedFile: IDirectoryItem;
   showPanal: boolean;
   className: string;
   loading: boolean;
 }
 
 export interface IActiveTabsBarPropsType {
-  items: ICurrentFileType[];
+  items: IDirectoryItem[];
   selected: string;
-  onClick: (file: ICurrentFileType) => void;
-  onClear: (files: ICurrentFileType[], selected: ICurrentFileType) => void;
+  onClick: (file: IDirectoryItem) => void;
+  onClear: (files: IDirectoryItem[], selected: IDirectoryItem) => void;
 }
 
 export interface CodeEditorPropsType {
-  selectedFile: ICurrentFileType;
-  selectedFiles: ICurrentFileType[];
+  selectedFile: IDirectoryItem;
+  selectedFiles: IDirectoryItem[];
   handleShowPanal: (prop: string) => void;
   showPanal: IShowPanalType;
-  handleFileClick: (file: ICurrentFileType) => void;
+  handleFileClick: (file: IDirectoryItem) => void;
   handleClearSelectedFile: (
-    files: ICurrentFileType[],
-    selected: ICurrentFileType
+    files: IDirectoryItem[],
+    selected: IDirectoryItem
   ) => void;
   className: string;
   handleEditorDidMount: () => void;

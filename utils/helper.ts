@@ -1,7 +1,4 @@
-import {
-  IDirectoryDataType,
-  IRawDirectoryDataType,
-} from "./interfaces/interfaces";
+import { IDirectoryItem, IRawDirectoryDataType } from "./interfaces/interfaces";
 
 const getColorByIssueType = (issue: string) => {
   switch (issue) {
@@ -22,39 +19,36 @@ const getColorByIssueType = (issue: string) => {
   }
 };
 
-const generateDirectoryData = (fileData: IRawDirectoryDataType) => {
-  const data = {
-    ...fileData,
+const generateDirectoryData = (
+  fileData: IRawDirectoryDataType
+): IDirectoryItem => {
+  const { name, type, value, children: rawChildren } = fileData;
+
+  const data: IDirectoryItem = {
+    name,
+    value,
+    type,
     path: `/${fileData.name}`,
-    children: fileData.children,
   };
 
-  const addPath = (fileStructure: any, parentPath: string) => {
-    return fileStructure.map((node: any) => {
-      const { name, type, children, value } = node;
-      const path = parentPath ? `${parentPath}/${name}` : `/${name}`;
+  const addPath = (
+    children: IRawDirectoryDataType[] = [],
+    parentPath: string
+  ): IDirectoryItem[] => {
+    return children.map((child) => {
+      const { name, type, value, children: nestedChildren } = child;
+      const path = `${parentPath}/${name}`;
 
-      if (type === "folder" && children && children.length > 0) {
-        const updatedChildren = addPath(children, path);
-        return {
-          name,
-          type,
-          path,
-          children: updatedChildren,
-        };
+      if (type === "folder" && nestedChildren && nestedChildren.length > 0) {
+        const updatedChildren = addPath(nestedChildren, path);
+        return { name, type, path, children: updatedChildren };
       }
 
-      return {
-        name,
-        type,
-        path,
-        value,
-      };
+      return { name, type, path, value };
     });
   };
 
-  const children = addPath(fileData.children, data.path);
-  data.children = children;
+  data.children = addPath(rawChildren, data.path);
   return data;
 };
 

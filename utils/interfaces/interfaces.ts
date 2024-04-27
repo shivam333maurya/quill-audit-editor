@@ -5,15 +5,12 @@ export interface IShowPanalType {
   right: boolean;
 }
 
-export interface ICurrentFileType {
+export interface IDirectoryItem {
   name: string;
   type: string;
   value?: string;
   path: string;
-}
-
-export interface IDirectoryDataType extends ICurrentFileType {
-  children?: ICurrentFileType[];
+  children?: IDirectoryItem[];
 }
 
 export interface IRawDirectoryDataType {

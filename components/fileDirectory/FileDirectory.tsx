@@ -6,8 +6,8 @@ import {
   IFileDirectoryPropsType,
   IFileNodePropsType,
 } from "@/utils/interfaces/props-interfaces";
-import { IDirectoryDataType } from "@/utils/interfaces/interfaces";
-import { MyEnum, EIcons } from "@/utils";
+import { IDirectoryItem } from "@/utils/interfaces/interfaces";
+import { EMyEnum, EIcons } from "@/utils";
 
 const FileNode = ({
   node,
@@ -76,7 +76,7 @@ const FileNode = ({
             {name}
           </summary>
           <ul>
-            {children?.map((child: IDirectoryDataType, index: number) => (
+            {children?.map((child: IDirectoryItem, index: number) => (
               <FileNode
                 key={`${child.name} ${index + 1}`}
                 node={child}
@@ -108,12 +108,12 @@ const FileDirectory = ({
       }`}
     >
       <h2 className="px-3 py-3">
-        {MyEnum.EXPLORER}
+        {EMyEnum.EXPLORER}
         <hr className="mt-2 border-[#FFFFFF14]" />
       </h2>
 
       <ul>
-        {data?.children?.map((child: IDirectoryDataType, index: number) => (
+        {data?.children?.map((child: IDirectoryItem, index: number) => (
           <FileNode
             key={`${child.name} ${index + 1}`}
             node={child}

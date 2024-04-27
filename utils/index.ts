@@ -1,4 +1,4 @@
-export { MyEnum, EIcons } from "./enums";
+export { EMyEnum, EIcons } from "./enums";
 export { getColorByIssueType, generateDirectoryData } from "./helper";
 export {
   CONSTANTS,

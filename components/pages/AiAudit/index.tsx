@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import {
   IBreadCrumbType,
   IColumnStylesTypes,
-  ICurrentFileType,
+  IDirectoryItem,
   IIssueDetails,
   IIssueType,
   IIssuesType,
@@ -27,10 +27,10 @@ import {
 } from "@/utils";
 
 export default function AiAudit() {
-  const [currentFile, setCurrentFile] = useState<ICurrentFileType>({
+  const [currentFile, setCurrentFile] = useState<IDirectoryItem>({
     ...DEFAULT_FILE_DATA,
   });
-  const [selectedFiles, setSelectedFiles] = useState<ICurrentFileType[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<IDirectoryItem[]>([]);
   const [selectedIssue, setSelectedIssue] = useState<IIssueType | null>(null);
   const [breadCrumbItems, setBreadCrumbItems] = useState<IBreadCrumbType[]>([
     {
@@ -52,7 +52,7 @@ export default function AiAudit() {
   });
   const [loading, setLoading] = useState<boolean>(true);
 
-  const handleFileSelection = (file: ICurrentFileType) => {
+  const handleFileSelection = (file: IDirectoryItem) => {
     const currentFile = { ...file };
 
     setSelectedFiles((prev) => {
@@ -65,14 +65,14 @@ export default function AiAudit() {
     });
   };
 
-  const handleFileClick = (file: ICurrentFileType) => {
+  const handleFileClick = (file: IDirectoryItem) => {
     setCurrentFile(file);
     handleFileSelection(file);
   };
 
   const handleClearSelectedFile = (
-    files: ICurrentFileType[],
-    selected: ICurrentFileType
+    files: IDirectoryItem[],
+    selected: IDirectoryItem
   ) => {
     const newItems = files.filter((file) => file.path !== selected.path);
     const currentFile = newItems.at(-1) || { ...DEFAULT_FILE_DATA };
@@ -142,9 +142,9 @@ export default function AiAudit() {
     setLoading(false);
   }
 
-  const fileDirectoryData: ICurrentFileType = useMemo(() => {
+  const fileDirectoryData: IDirectoryItem = useMemo(() => {
     const data = generateDirectoryData(FILE_DATA);
-    return data;
+    return data || {};
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-enum MyEnum {
+enum EMyEnum {
   EXPLORER = "EXPLORER",
 }
 
@@ -15,4 +15,4 @@ enum EIcons {
   ArrowDown = "./arrow-down.svg",
 }
 
-export { MyEnum, EIcons };
+export { EMyEnum, EIcons };
