@@ -97,3 +97,7 @@ body {
   margin: auto;
   content: " ";
 }
+
+.file-item:hover {
+  background-color: #007aff14;
+}

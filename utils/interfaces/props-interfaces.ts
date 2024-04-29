@@ -14,6 +14,7 @@ export interface IFileNodePropsType {
   isSelected?: boolean;
   selectedFile?: IDirectoryItem;
   loading: boolean;
+  padding: number;
 }
 
 export interface IOverlayPanalPropsType {

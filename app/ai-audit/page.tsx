@@ -5,7 +5,7 @@ import AiAudit from "@/components/pages/AiAudit";
 export default function AiAuditPage() {
   return (
     <React.Fragment>
-      <AiAudit />;
+      <AiAudit />
     </React.Fragment>
   );
 }

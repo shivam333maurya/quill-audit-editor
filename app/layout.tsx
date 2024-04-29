@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Quill Audit Editor",
   description: "Quill Editor cretaed by nextjs",
+  icons: "/icon.svg",
 };
 
 export default function RootLayout({
@@ -19,9 +20,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/icon.svg" />
-      </Head>
       <body className={`${inter.className} bg-[#0D0F11]`}>
         <Layout />
         <div className="h-[calc(100vh-88px)] bg-[#0D0F11]`}>">{children}</div>

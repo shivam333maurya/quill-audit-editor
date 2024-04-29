@@ -16,6 +16,7 @@ const FileNode = ({
   isSelected,
   selectedFile,
   loading,
+  padding,
 }: IFileNodePropsType) => {
   const { name, type, children, path } = node;
   const [isOpen, setIsOpen] = useState(false);
@@ -27,27 +28,27 @@ const FileNode = ({
       if (type === "file" && onSelect) {
         onSelect(node); // Pass the file node to the onSelect function
       }
-      if (type === "folder" && onSelect) {
+      if (type === "folder" && onSelect && !loading) {
         setIsOpen(!isOpen);
       }
     }
   };
-
-  let margin = 0;
-  if (index !== undefined) {
-    margin = index * 10;
-  }
-
+  const spacing = padding + 10;
   return (
     <li
       key={name}
-      style={{ margin: 10 }}
       className={`${isSelected ? "selected" : "dedwef"} cursor-pointer`}
     >
       {type === "file" ? (
         <span
-          className={`${activeFile ? "text-[#007AFF]" : ""}`}
+          className={`${activeFile ? "text-[#007AFF]" : ""} file-item`}
           onClick={() => handleFileClick(type)}
+          style={{
+            display: "block",
+            paddingInline: padding,
+            paddingBlock: 6,
+            width: "100%",
+          }}
         >
           {name}
         </span>
@@ -58,6 +59,11 @@ const FileNode = ({
               activeFolder ? "text-[#007AFF]" : ""
             }`}
             onClick={() => handleFileClick(type)}
+            style={{
+              paddingInline: padding,
+              paddingBlock: 6,
+              width: "100%",
+            }}
           >
             <Image
               src={isOpen ? EIcons.ArrowDown : EIcons.ArrowRight}
@@ -84,6 +90,7 @@ const FileNode = ({
                 isSelected={selectedFile && selectedFile.name === child?.name}
                 selectedFile={selectedFile}
                 loading={loading}
+                padding={spacing}
               />
             ))}
           </ul>
@@ -122,6 +129,7 @@ const FileDirectory = ({
             isSelected={selectedFile && selectedFile.name === child?.name}
             selectedFile={selectedFile}
             loading={loading}
+            padding={10}
           />
         ))}
       </ul>
