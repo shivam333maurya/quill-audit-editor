@@ -1,4 +1,4 @@
-export { EMyEnum, EIcons } from "./enums";
+export { EMyEnum } from "./enums";
 export { getColorByIssueType, generateDirectoryData } from "./helper";
 export {
   CONSTANTS,
@@ -7,4 +7,5 @@ export {
   DEFAULT_WIDTH,
   DEFAULT_FILE_DATA,
   NAV_BREADCRUMB,
+  FILES,
 } from "./constant";

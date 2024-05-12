@@ -5,7 +5,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { IoIosArrowDown } from "react-icons/io";
 
-import { EIcons, CONSTANTS } from "@/utils";
+import { CONSTANTS } from "@/utils";
+import { EIcons } from "@/assets";
 
 const Layout = () => {
   const { LAYOUT_CONFIG } = CONSTANTS;
@@ -24,7 +25,7 @@ const Layout = () => {
                 src={EIcons.QuillLogo}
                 className="w-auto h-auto"
               />
-              <Link href={"."}>QuillShield</Link>
+              <Link href={"/"}>QuillShield</Link>
             </span>
             <hr className="w-[51px] border-[#FFFFFF14] rotate-90" />
           </div>
@@ -34,7 +35,7 @@ const Layout = () => {
                 {LAYOUT_CONFIG.map((key) => (
                   <li
                     className={`${
-                      pathname.trim() === key?.path.trim()
+                      pathname.trim().includes(key?.path.trim())
                         ? "active-nav-link"
                         : ""
                     }`}

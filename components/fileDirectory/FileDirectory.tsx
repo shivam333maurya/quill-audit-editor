@@ -7,7 +7,8 @@ import {
   IFileNodePropsType,
 } from "@/utils/interfaces/props-interfaces";
 import { IDirectoryItem } from "@/utils/interfaces/interfaces";
-import { EMyEnum, EIcons } from "@/utils";
+import { EMyEnum } from "@/utils";
+import { EIcons } from "@/assets";
 
 const FileNode = ({
   node,

@@ -8,6 +8,7 @@ import {
   IIssueDetails,
   IIssueType,
   IIssuesType,
+  IRawDirectoryDataType,
   IShowPanalType,
 } from "@/utils/interfaces/interfaces";
 import {
@@ -15,18 +16,17 @@ import {
   CodeEditor,
   FileDirectory,
   EditorHeader,
-  BreadCrumb,
   IssuesTab,
+  DynamicBreadcrumb,
 } from "@/components";
 import {
   DEFAULT_FILE_DATA,
   generateDirectoryData,
   DEFAULT_WIDTH,
   FILE_DATA,
-  NAV_BREADCRUMB,
 } from "@/utils";
 
-export default function AiAudit() {
+function AiAuditFile() {
   const [currentFile, setCurrentFile] = useState<IDirectoryItem>({
     ...DEFAULT_FILE_DATA,
   });
@@ -51,7 +51,6 @@ export default function AiAudit() {
     ...DEFAULT_WIDTH,
   });
   const [loading, setLoading] = useState<boolean>(true);
-
   const handleFileSelection = (file: IDirectoryItem) => {
     const currentFile = { ...file };
 
@@ -143,13 +142,19 @@ export default function AiAudit() {
   }
 
   const fileDirectoryData: IDirectoryItem = useMemo(() => {
+    // const selectedFile = FILES.find(
+    //   (file: IRawDirectoryDataType) => file.name === file_name
+    // );
+    // console.log({ selectedFile, file_name, params });
     const data = generateDirectoryData(FILE_DATA);
     return data || {};
   }, []);
 
   return (
     <main className="h-full">
-      <BreadCrumb list={NAV_BREADCRUMB} />
+      <div className="px-4">
+        <DynamicBreadcrumb />
+      </div>
       <div className="h-[calc(100%-28px)] bg-[#191D23] px-2 py-3 mx-3 rounded-[4px]">
         <EditorHeader />
         <hr className="mb-2 border-[#FFFFFF14]" />
@@ -209,3 +214,5 @@ export default function AiAudit() {
     </main>
   );
 }
+
+export { AiAuditFile };

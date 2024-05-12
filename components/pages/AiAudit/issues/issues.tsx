@@ -11,7 +11,8 @@ import {
   IssuesList,
   Tabs,
 } from "@/components";
-import { EIcons, ISSUES } from "@/utils";
+import { ISSUES } from "@/utils";
+import { EIcons } from "@/assets";
 
 const IssuesTab = ({
   handleIssuesClick,

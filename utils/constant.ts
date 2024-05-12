@@ -365,7 +365,7 @@ const ISSUES = [
 ];
 
 const FILE_DATA = {
-  name: "root",
+  name: "file-1",
   type: "folder",
   children: [
     {
@@ -392,6 +392,66 @@ const FILE_DATA = {
     { name: "README.md", type: "file", value: "hello-1" },
   ],
 };
+
+const FILE_DATA_2 = {
+  name: "file-2",
+  type: "folder",
+  children: [
+    {
+      name: "src",
+      type: "folder",
+      children: [
+        { name: "index.js", type: "file", value: "index-1" },
+        {
+          name: "components",
+          type: "folder",
+          children: [
+            { name: "index.js", type: "file", value: "index-2" },
+            { name: "page.js", type: "file", value: "page-1" },
+          ],
+        },
+        { name: "styles.css", type: "file", value: "styles-1" },
+      ],
+    },
+    {
+      name: "public",
+      type: "folder",
+      children: [{ name: "html.html", type: "file", value: "html-1" }],
+    },
+    { name: "README.md", type: "file", value: "hello-1" },
+  ],
+};
+
+const FILE_DATA_3 = {
+  name: "file-3",
+  type: "folder",
+  children: [
+    {
+      name: "src",
+      type: "folder",
+      children: [
+        { name: "index.js", type: "file", value: "index-1" },
+        {
+          name: "components",
+          type: "folder",
+          children: [
+            { name: "index.js", type: "file", value: "index-2" },
+            { name: "page.js", type: "file", value: "page-1" },
+          ],
+        },
+        { name: "styles.css", type: "file", value: "styles-1" },
+      ],
+    },
+    {
+      name: "public",
+      type: "folder",
+      children: [{ name: "html.html", type: "file", value: "html-1" }],
+    },
+    { name: "README.md", type: "file", value: "hello-1" },
+  ],
+};
+
+const FILES = [FILE_DATA, FILE_DATA_2, FILE_DATA_3];
 
 const NAV_BREADCRUMB = [
   { name: "Ai Audit", key: 0 },
@@ -431,4 +491,5 @@ export {
   DEFAULT_WIDTH,
   DEFAULT_FILE_DATA,
   NAV_BREADCRUMB,
+  FILES,
 };

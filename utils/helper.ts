@@ -20,15 +20,19 @@ const getColorByIssueType = (issue: string) => {
 };
 
 const generateDirectoryData = (
-  fileData: IRawDirectoryDataType
+  fileData: IRawDirectoryDataType | undefined
 ): IDirectoryItem => {
+  if (!fileData) {
+    return { name: "", type: "", path: "", children: [] };
+  }
+
   const { name, type, value, children: rawChildren } = fileData;
 
   const data: IDirectoryItem = {
     name,
     value,
     type,
-    path: `/${fileData.name}`,
+    path: `/${name}`,
   };
 
   const addPath = (

@@ -5,7 +5,8 @@ export * from "./layout/Layout";
 export * from "./codeEditor/CodeEditor";
 export * from "./codeEditor/ActiveTabsBar";
 export * from "./codeEditor/EditorHeader";
-export * from "./breadcrumb/breadcrumb";
+export * from "./breadcrumb/Breadcrumb";
+export * from "./breadcrumb/DynamicBreadcrumb";
 
 // UI
 export * from "./fileDirectory/FileDirectory";
@@ -19,3 +20,4 @@ export * from "./pages/AiAudit/issues/issue";
 export * from "./pages/AiAudit/issues/issues";
 export * from "./pages/AiAudit/issues/issuesList";
 export * from "./pages/AiAudit";
+export * from "./pages/AiAudit/files";

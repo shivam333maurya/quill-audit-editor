@@ -2,7 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { RxDotFilled } from "react-icons/rx";
 
-import { EIcons, getColorByIssueType } from "@/utils";
+import { getColorByIssueType } from "@/utils";
+import { EIcons } from "@/assets";
 
 const EditorHeader: React.FC = () => {
   return (

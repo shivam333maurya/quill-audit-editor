@@ -1,11 +1,10 @@
 import React from "react";
-
-import AiAudit from "@/components/pages/AiAudit";
+import { AiAuditFiles } from "@/components";
 
 export default function AiAuditPage() {
   return (
     <React.Fragment>
-      <AiAudit />
+      <AiAuditFiles />
     </React.Fragment>
   );
 }
