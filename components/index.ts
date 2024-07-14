@@ -21,3 +21,4 @@ export * from "./pages/AiAudit/issues/issues";
 export * from "./pages/AiAudit/issues/issuesList";
 export * from "./pages/AiAudit";
 export * from "./pages/AiAudit/files";
+export * from "./pages/home";
